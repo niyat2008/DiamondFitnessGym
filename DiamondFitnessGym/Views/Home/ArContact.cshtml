@@ -1,0 +1,150 @@
+﻿@model DiamondFitnessGym.Controllers.MailModel
+@{
+    ViewBag.Title = "ArContact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <div class="colorlib-loader"></div>
+     @Html.Partial("~/Views/Home/_TopPage.cshtml") 
+    <div class="  colorlib-request ">
+        <div id="Schedule"></div>
+        <div>
+            <h1 id="eshtarek">احجزي مكانك</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-push-8 animate-box">
+                    <div class="request">
+                        <h2>اشتركي الآن</h2>
+                        <p>
+                            أشتركي الآن لتحجزي مكانك و ستحصلي على خصم خاص بمناسبة الإفتتاح ، حيث يتوفر لدينا أفضل التمارين الرياضية والألعاب الترفيهية
+                            الممتعة والمفيدة تقدم على أعلى مستوى من الحرفية ، فنحن نعمل من أجل سعادتك أثناء تحقيق هدفك
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-6 col-md-pull-3">
+                    <form action="/ar/Book" method="post" class="colorlib-form">
+                        <div class="row">
+
+                            @if (ViewBag.Get == false)
+                            {
+                                if (ViewBag.Added)
+                                {
+                                    <div class="alert alert-success">تم الارسال</div>
+                                }
+                                else
+                                {
+                                    <div class="alert alert-danger">حاول مجددا</div>
+                                }}
+
+                            @Html.ValidationSummary(null, new { @class = "text-danger" })
+                            <div class="col-md-6 animate-box">
+                                <div class="form-group">
+                                    <label for="no">أسم العائلة</label>
+                                    <div class="form-field">
+                                        @Html.EditorFor(m => m.secondName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate-box">
+                                <div class="form-group">
+                                    <label for="name">الأسم</label>
+                                    <div class="form-field ">
+                                        @Html.EditorFor(m => m.FirstName, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate-box">
+                                <div class="form-group">
+                                    <label for="no"> رقم الهوية الوطنية \ الاقامة</label>
+                                    <div class="form-field">
+                                        @Html.EditorFor(m => m.NationalId, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate-box">
+                                <div class="form-group">
+                                    <label for="no">الجوال</label>
+                                    <div class="form-field">
+                                        @Html.EditorFor(m => m.Phone, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 animate-box">
+                                <div class="form-group">
+                                    <label for="no">المدينة</label>
+                                    <div class="form-field">
+                                        @Html.EditorFor(m => m.City, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate-box">
+                                <div class="form-group">
+                                    <label for="no">الحي</label>
+                                    <div class="form-field">
+                                        @Html.EditorFor(m => m.State, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate-box">
+                                <div class="form-group">
+                                    <label for="no">العمر</label>
+                                    <div class="form-field">
+                                        @Html.EditorFor(m => m.Age, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 animate-box">
+                                <div class="form-group">
+                                    <label for="services">مدة الإشتراك</label>
+                                    <div class="form-field">
+                                        <i class="icon icon-arrow-down3"></i>
+                                        <select name="Period" id="services" class="form-control">
+                                            <option value="3 أشهر">3 أشهر</option>
+                                            <option value="6 أشهر">6 أشهر</option>
+                                            <option value="سنة">سنة</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 animate-box">
+                                <div class="form-group">
+                                    <label for="no">البريد الالكتروني</label>
+                                    <div class="form-field">
+                                        <input type="email" class="form-control" name="Email" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div  style="text-align:center">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-secondary btn-lg color-white" style="background-color: #8cc53e; font-size: 25px; line-height:0.3333; ">احجزي الآن</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div id="contact"></div> 
+    @Html.Partial("~/Views/Home/_FooterLinks.cshtml")
+      
+</body>

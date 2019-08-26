@@ -1,0 +1,94 @@
+﻿
+@{ 
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="shortcut icon" href="/Content/CommingSoon/img/logoicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daimondfit | Comming Soon Page</title>
+    <meta name="description" content="Daimondfit | Comming Soon Page">
+    <meta name="keywords" content="Daimondfit | Comming Soon Page">
+    <link href='https://fonts.googleapis.com/css?family=Lobster|Open+Sans:400,400italic,300italic,300|Raleway:300,400,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/Content/CommingSoon/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/CommingSoon/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/CommingSoon/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/Content/CommingSoon/css/style.css">
+   
+</head>
+
+<body>
+    <div class="content">
+        <div class="container wow fadeInUp delay-03s">
+            <div class="row">
+                <div class="logo text-center">
+                    <img src="/Content/CommingSoon/img/logo.png" alt="logo" width="150">
+                    <h2>We Are Comming Soon</h2>
+                </div>
+
+                <div id="countdown" data-wow-delay=".3s" data-date="June 26, 2019 06:00:00"></div>
+                <h2 class="subs-title text-center">Book now </h2>
+                <div class="subcription-info text-center">
+                    <div class="alert info-box"></div>
+                    <form class="subscribe_form" action="#" method="post">
+                        <input required="" value="" placeholder="Enter your email..." class="email" id="email" name="email" type="email">
+                        <input class="subscribe" name="email" value="Subscribe!" type="button">
+                    </form>
+                    <p class="sub-p"></p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+    <script src="/Content/CommingSoon/js/jquery.min.js"></script>
+    <script src="/Content/CommingSoon/js/bootstrap.min.js"></script>
+    <script src="/Content/CommingSoon/js/jquery.countdown.min.js"></script>
+    <script src="/Content/CommingSoon/js/wow.js"></script>
+    <script src="/Content/CommingSoon/js/custom.js"></script>
+    <script src="/Content/CommingSoon/contactform/contactform.js"></script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $(".subscribe").click(function () {
+            
+            var email = $("#email");
+
+            if (email.val() === '') { 
+                return;
+            } 
+
+            $.ajax({ 
+                method: "GET",
+                url: "/subscribe/?email=" + (email.val()), 
+                success: function (data) {
+
+                    if (data === true) {
+                        $('.info-box').show();
+                        $('.info-box').addClass("alert-success");
+                        $('.info-box').removeClass("alert-danger");
+                        $('.info-box').html("subscribed successfully");
+                    } else {
+                        $('.info-box').show();
+                        $('.info-box').addClass("alert-danger");
+                        $('.info-box').removeClass("alert-success");
+                        $('.info-box').html("make sure the email correct.");
+                    }
+                }
+            });
+        });
+    });
+</script>
