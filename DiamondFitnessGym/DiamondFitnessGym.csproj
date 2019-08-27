@@ -1338,6 +1338,8 @@
     <Content Include="Views\Home\_TopPage.cshtml" />
     <Content Include="Views\Home\_TopPageEn.cshtml" />
     <Content Include="Views\Home\CommingSoon.cshtml" />
+    <Content Include="Views\Home\ArFContact.cshtml" />
+    <Content Include="Views\Home\EnFContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1370,7 +1372,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50750</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50770/</IISUrl>
+          <IISUrl>http://localhost:50750/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

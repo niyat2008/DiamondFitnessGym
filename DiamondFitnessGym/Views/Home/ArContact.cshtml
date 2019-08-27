@@ -5,13 +5,15 @@
 }
 
 <body>
+
     <div class="colorlib-loader"></div>
-     @Html.Partial("~/Views/Home/_TopPage.cshtml") 
-    <div class="  colorlib-request ">
+    @Html.Partial("~/Views/Home/_TopPage.cshtml")
+
+    <div class="colorlib-request">
         <div id="Schedule"></div>
-        <div>
-            <h1 id="eshtarek">احجزي مكانك</h1>
-        </div>
+        @*<div>
+                <h1 id="eshtarek">احجزي مكانك</h1>
+            </div>*@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-push-8 animate-box">
@@ -24,8 +26,11 @@
                     </div>
                 </div>
                 <div class="col-md-6"></div>
-                <div class="col-md-6 col-md-pull-3">
+                <div id="contactform" class="col-md-6 col-md-pull-3" >
                     <form action="/ar/Book" method="post" class="colorlib-form">
+                        <div>
+                            <h1 id="eshtarek">احجزي مكانك</h1>
+                        </div>
                         <div class="row">
 
                             @if (ViewBag.Get == false)
@@ -37,14 +42,16 @@
                                 else
                                 {
                                     <div class="alert alert-danger">حاول مجددا</div>
-                                }}
+                                }
+                            }
 
                             @Html.ValidationSummary(null, new { @class = "text-danger" })
                             <div class="col-md-6 animate-box">
                                 <div class="form-group">
                                     <label for="no">أسم العائلة</label>
                                     <div class="form-field">
-                                        @Html.EditorFor(m => m.secondName, new { @class = "form-control" })
+                                        @*@Html.EditorFor(m => m.secondName, new { @class = "form-control" })*@
+                                        <input required type="text" name="secondName" class="form-control" oninvalid="this.setCustomValidity('ادخل اسم العائلة ')" oninput="this.setCustomValidity('')" />
                                     </div>
                                 </div>
                             </div>
@@ -52,8 +59,8 @@
                                 <div class="form-group">
                                     <label for="name">الأسم</label>
                                     <div class="form-field ">
-                                        @Html.EditorFor(m => m.FirstName, new { @class = "form-control" })
-
+                                        @*@Html.EditorFor(m => m.FirstName, new { @class = "form-control" })*@
+                                        <input required type="text" name="FirstName" class="form-control" oninvalid="this.setCustomValidity('ادخل الاسم ')" oninput="this.setCustomValidity('')" />
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +77,8 @@
                                 <div class="form-group">
                                     <label for="no">الجوال</label>
                                     <div class="form-field">
-                                        @Html.EditorFor(m => m.Phone, new { @class = "form-control" })
+                                        @*@Html.EditorFor(m => m.Phone, new { @class = "form-control" })*@
+                                        <input required type="text" name="Phone" class="form-control" oninvalid="this.setCustomValidity('ادخل الموبايل')" oninput="this.setCustomValidity('')" />
 
                                     </div>
                                 </div>
@@ -98,7 +106,8 @@
                                 <div class="form-group">
                                     <label for="no">العمر</label>
                                     <div class="form-field">
-                                        @Html.EditorFor(m => m.Age, new { @class = "form-control" })
+                                        @*@Html.EditorFor(m => m.Age, new { @class = "form-control" })*@
+                                        <input required oninvalid="this.setCustomValidity('ادخل العمر')" oninput="this.setCustomValidity('')" type="text" class="form-control" name="Age" />
 
                                     </div>
                                 </div>
@@ -106,30 +115,50 @@
 
                             <div class="col-md-6 animate-box">
                                 <div class="form-group">
-                                    <label for="services">مدة الإشتراك</label>
+                                    <label for="services">نوع الإشتراك</label>
                                     <div class="form-field">
                                         <i class="icon icon-arrow-down3"></i>
-                                        <select name="Period" id="services" class="form-control">
-                                            <option value="3 أشهر">3 أشهر</option>
-                                            <option value="6 أشهر">6 أشهر</option>
-                                            <option value="سنة">سنة</option>
+                                        <select name="Period" required oninvalid="this.setCustomValidity('اختر نوع الاشتراك')" oninput="this.setCustomValidity('')" id="services" class="form-control">
+                                            <option selected disabled value="">أختر نوع الاشتراك</option>
+                                            <option value="دايموند بلس (اشتراك الدايموند + الاكواايروبكس) 3 أشهر">دايموند بلس (اشتراك الدايموند + الاكواايروبكس) 3 أشهر</option>
+                                            <option value="دايموند بلس (اشتراك الدايموند + الاكواايروبكس) 6 أشهر">دايموند بلس (اشتراك الدايموند + الاكواايروبكس) 6 أشهر</option>
+                                            <option value="دايموند بلس (اشتراك الدايموند + الاكواايروبكس) سنة">دايموند بلس (اشتراك الدايموند + الاكواايروبكس)  سنة</option>
+                                            <option value="دايموند بلس (الباقة الاساسية) 3 أشهر">دايموند بلس (الباقة الاساسية) 3 أشهر</option>
+                                            <option value="دايموند بلس (الباقة الاساسية) 6 أشهر">دايموند بلس (الباقة الاساسية) 6 أشهر</option>
+                                            <option value="دايموند بلس (الباقة الاساسية) سنة">دايموند بلس (الباقة الاساسية)  سنة</option>
+                                            <option value="تعليم سباحة">تعليم سباحة</option>
                                         </select>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 animate-box">
+                            <div class="col-md-6 animate-box">
                                 <div class="form-group">
                                     <label for="no">البريد الالكتروني</label>
                                     <div class="form-field">
-                                        <input type="email" class="form-control" name="Email" />
+                                        <input required oninvalid="this.setCustomValidity('ادخل الايميل')" oninput="this.setCustomValidity('')" type="email" class="form-control" name="Email" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate-box">
+                                <div class="form-group">
+                                    <label for="extra-services">الخدمات الاضافية</label>
+                                    <div class="form-field">
+                                        <i class="icon icon-arrow-down3"></i>
+                                        <select name="extraServices" id="extra-services" class="form-control">
+                                            <option selected disabled value="">أختر خدمة اضافية</option>
+                                            <option value="أخصائية تغذية">أخصائية تغذية(جلسة مجانية لكل مشتركة)</option>
+                                            <option value="خدمة التوصيل">خدمة التوصيل</option>
+                                            <option value="منطقة أطفال">منطقة أطفال</option>
+                                        </select>
+
                                     </div>
                                 </div>
                             </div>
 
 
                         </div>
-                        <div  style="text-align:center">
+                        <div style="text-align:center">
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <div class="card-body">
@@ -142,9 +171,14 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
-    <div id="contact"></div> 
+    <div id="contact"></div>
+
     @Html.Partial("~/Views/Home/_FooterLinks.cshtml")
-      
+
+
+   
+
+
 </body>

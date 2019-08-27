@@ -1,0 +1,201 @@
+﻿@model DiamondFitnessGym.Controllers.MailModel
+
+@{
+    ViewBag.Title = "Daimond Fitness";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>EnFContact</h2>*@
+<link href="~/Content/css/styleEn.css" rel="stylesheet" />
+
+<div style="background-color:#ea6f99;">
+    <div class="container" style="padding-top:0">
+        <div class="row" style="padding-top:40px;padding-right:30px;">
+            <button type="button" class="btn btn-success pull-right"><a href="/ArFContact">عربي</a></button>
+        </div>
+
+    </div>
+
+</div>
+<div class="colorlib-request ">
+
+    <div id="Schedule"></div>
+    @*<div>
+            <h1 id="eshtarek">Book now</h1>
+        </div>*@
+    <div class="container">
+        @*<div class="row" style="padding-bottom:40px;">
+                <button type="button" class="btn btn-success pull-right"><a href="/en">English</a></button>
+            </div>*@
+
+        <div class="row">
+            <div class="col-md-4 col-md-push-8 animate-box">
+                <div class="request">
+                    <h2>Subscribe now</h2>
+                    <p>
+                        Join now to take your place and get a special discount for the opening, where we have the best exercise and entertainment
+                        games Fun and useful at the highest level of craftsmanship, we work for your happiness while achieving your goal
+                    </p>
+
+                </div>
+
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6 col-md-pull-3">
+                <form method="post" action="/en/Book" class="colorlib-form">
+                    <div>
+                        <h1 id="eshtarek">Book now</h1>
+                    </div>
+                    <div class="row">
+                        @if (ViewBag.Get == false)
+                        {
+                            if (ViewBag.Added)
+                            {
+                                <div class="alert alert-success">Added Successfully</div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-danger">try Again</div>
+                            }
+                        }
+                        @Html.ValidationSummary(null, new { @class = "text-danger" })
+                        <div class="col-md-6 animate-box">
+                            <div class="form-group">
+                                <label for="no">family name</label>
+                                <div class="form-field">
+                                    @*@Html.EditorFor(m => m.secondName, new { @class = "form-control" })*@
+                                    <input required type="text" name="secondName" class="form-control" oninvalid="this.setCustomValidity('Enter Family Name')" oninput="this.setCustomValidity('')" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 animate-box">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <div class="form-field ">
+                                    @*@Html.EditorFor(m => m.FirstName, new { @class = "form-control" })*@
+                                    <input required type="text" name="FirstName" class="form-control" oninvalid="this.setCustomValidity('Enter Your First Name')" oninput="this.setCustomValidity('')" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 animate-box">
+                            <div class="form-group">
+                                <label for="no">
+                                    National ID number
+                                </label>
+                                <div class="form-field">
+                                    @Html.EditorFor(m => m.NationalId, new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 animate-box">
+                            <div class="form-group">
+                                <label for="no">
+                                    phone number
+                                </label>
+                                <div class="form-field">
+                                    @*@Html.EditorFor(m => m.Phone, new { @class = "form-control" })*@
+                                    <input required type="text" name="Phone" class="form-control" oninvalid="this.setCustomValidity('Enter Phone ')" oninput="this.setCustomValidity('')" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 animate-box">
+                            <div class="form-group">
+                                <label for="no">City</label>
+                                <div class="form-field">
+                                    @Html.EditorFor(m => m.City, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 animate-box">
+                            <div class="form-group">
+                                <label for="no">
+                                    District
+                                </label>
+                                <div class="form-field">
+                                    @Html.EditorFor(m => m.State, new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 animate-box">
+                            <div class="form-group">
+                                <label for="no">Age</label>
+                                <div class="form-field">
+                                    @*@Html.EditorFor(m => m.Age, new { @class = "form-control" })*@
+                                    <input required oninvalid="this.setCustomValidity('Enter Age')" oninput="this.setCustomValidity('')" type="text" class="form-control" name="Age" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 animate-box">
+                            <div class="form-group">
+                                <label for="Period">
+                                    Subscription Type
+                                </label>
+                                <div class="form-field">
+                                    <i class="icon icon-arrow-down3"></i>
+                                    <select required oninvalid="this.setCustomValidity('Select Subscription Type')" oninput="this.setCustomValidity('')" name="Period" id="services" class="form-control">
+                                        <option selected disabled value="">Select Subscription Type</option>
+                                        <option value="Daimond Plus (Daimond Subscription + Aqua aerobics ) 3 months">Daimond Plus (Daimond Subscription + Aqua aerobics ) 3 months</option>
+                                        <option value="Daimond Plus (Daimond Subscription + Aqua aerobics ) 6 months">Daimond Plus (Daimond Subscription + Aqua aerobics ) 6 months</option>
+                                        <option value="Daimond Plus (Daimond Subscription + Aqua aerobics ) Year">Daimond Plus (Daimond Subscription + Aqua aerobics ) Year</option>
+                                        <option value="Daimond (Basic Package) 3 months">Daimond (Basic Package) 3 months</option>
+                                        <option value="Daimond (Basic Package) 6 months">Daimond (Basic Package) 6 months</option>
+                                        <option value="Daimond (Basic Package) Year">Daimond (Basic Package) Year</option>
+                                        <option value="Swimming education">Swimming education</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 animate-box">
+                            <div class="form-group">
+                                <label for="no">E-mail</label>
+                                <div class="form-field">
+                                    @*@Html.EditorFor(m => m.Email, new { @class = "form-control" })*@
+                                    <input required oninvalid="this.setCustomValidity('Enter Email')" oninput="this.setCustomValidity('')" type="email" class="form-control" name="Email" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 animate-box">
+                            <div class="form-group">
+                                <label for="extra-services">
+                                    Extra Service
+                                </label>
+                                <div class="form-field">
+                                    <i class="icon icon-arrow-down3"></i>
+                                    <select name="extraServices" id="extra-services" class="form-control">
+                                        <option disabled selected value="">Select Extra Service</option>
+                                        <option value="Dietitian (Session for Each Subscriber)">Dietitian (Session for Each Subscriber)</option>
+                                        <option value="Delivery Service">Delivery Service</option>
+                                        <option value="Childern Region">Childern Region</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="text-align:center">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <div class="card-body">
+                                    <button type="submit" class="btn btn-secondary btn-lg  color-white" style="background-color: #8cc53e; font-size: 25px; line-height:0.3333; ">Subscribe now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="contact"></div>

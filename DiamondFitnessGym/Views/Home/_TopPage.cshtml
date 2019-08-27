@@ -1,8 +1,8 @@
 ﻿
 <link href="~/Content/css/styleAr.css" rel="stylesheet" />
 <div id="page">
-    <nav class="colorlib-nav" role="navigation">
-        <div class="top-menu">
+    <nav class="colorlib-nav" role="navigation" >
+        <div class="top-menu" id="fixed-header">
             <div class="container">
                 <div class="row">
                     
@@ -16,13 +16,14 @@
                                 <a href="/ar">الرئيسية</a>
                             </li>
                             <li>
-                                <a href="/ar/Book"> أحجزي مكانك</a>
+                                @*<a href="/ar/Book#contactform"> أحجزي مكانك</a>*@
+                                <a id="serve-place" href="/ar/Book#eshtarek">أحجزي مكانك</a>
                             </li>
                             <li>
                                 <a href="/ar#exercise">التمارين الرئيسية</a>
                             </li>
                             <li>
-                                <a href="/ar#fun">خدماتنا</a>
+                                <a href="/ar#ahhh">خدماتنا</a>
                             </li>
                             <li>
                                 <a href="/ar#trainer">المدربات</a>
@@ -126,5 +127,39 @@
         </div>
     </aside>
 </div>
+<script>
+    var jump = function (e) {
+        if (e) {
+            e.preventDefault();
+            var target = $(this).attr("href");
+        } else {
+            var target = location.hash;
+        }
 
+        $('html,body').animate(
+            {
+                scrollTop: $(target).offset().top
+            }, 2000, function () {
+                location.hash = target;
+            });
+
+    }
+
+    $('html, body').hide();
+
+    $(document).ready(function () {
+
+        $('#serve-place').bind("click", jump);
+
+        if (location.hash) {
+            setTimeout(function () {
+                $('html, body').scrollTop(0).show();
+                jump();
+            }, 0);
+        } else {
+            $('html, body').show();
+        }
+    });
+   
+</script>
 

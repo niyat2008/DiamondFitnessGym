@@ -14,7 +14,9 @@ namespace DiamondFitnessGym.Controllers
             public string NationalId { get; set; }
             public string State { get; set; }
             public string City { get; set; }
+            [Required]
             public string Period { get; set; }
+            public string ExtraServices { get; set; }
             [Required]
             public string Age { get; set; }
             public string Health { get; set; }

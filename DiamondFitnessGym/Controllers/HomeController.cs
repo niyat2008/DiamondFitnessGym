@@ -11,12 +11,13 @@ namespace DiamondFitnessGym.Controllers
 {
     public class HomeController : Controller
     {
-
+        
         private string emails = @"gm@daimondfit.com,df@daimondfit.com,daimondfit@daimondfit.com,co@daimondfit.com,info@daimondfit.com";
         private string server = @"niyat.com.sa";
         private string email = @"a.shehata@niyat.com.sa";
         private string pass = @"pM3^43rn";
 
+        
         [Route("ar")]
         [Route("")]
         public ActionResult Index()
@@ -29,6 +30,16 @@ namespace DiamondFitnessGym.Controllers
         //{
         //    return View();
         //}
+        [Route("ArFContact")]
+        public ActionResult ArFContact()
+        {
+            return View();
+        }
+        [Route("EnFContact")]
+        public ActionResult EnFContact()
+        {
+            return View();
+        }
         [Route("subscribe")]
         [HttpGet]
         public ActionResult subscribe(string email)
@@ -212,20 +223,23 @@ public  class EmailManager
             "Subscription: {4} \n" +
             "Age: {5} \n" +
             "City: {6} \n" +
-            "Email: {7} \n", mailModel.FirstName,
+            "Email: {7} \n"+ 
+            "ExtraService: {8} \n", mailModel.FirstName,
             mailModel.secondName,
             mailModel.Phone,
             mailModel.NationalId,
             mailModel.Period,
             mailModel.Age, 
             mailModel.City,
-            mailModel.Email).ToString();
+            mailModel.Email,
+            mailModel.ExtraServices).ToString();
         try
         {
             smtpClient.Send(mailMessage);
         }
         catch (Exception e)
         {
+            var x = e;
             return false;
         }
 
